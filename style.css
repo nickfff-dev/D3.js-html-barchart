@@ -1,0 +1,53 @@
+.container{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1360px;
+
+}
+
+
+.dropdown {
+   
+    display: block;
+    position: relative;
+ 
+
+   
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+
+
+
+   
+   #legend svg {
+      height: 100px; 
+   }
+
+
+
+   /*! CSS Used from: Embedded */
+.oi-ec050e{--length1:3.25px;--length2:6.5px;--length3:13px;--label-width:120px;--input-width:240px;font:13px/1.2 var(--sans-serif);}
+form.oi-ec050e{display:flex;align-items:center;flex-wrap:wrap;min-height:25.5px;}
+form.oi-ec050e>label{width:100%;padding-bottom:3px;}
+@media only screen and (min-width:30em){
+form.oi-ec050e{flex-wrap:nowrap;width:calc(var(--input-width) + var(--label-width));max-width:100%;}
+form.oi-ec050e>label{flex-shrink:0;align-self:start;padding:5px 0 4px 0;width:var(--label-width);margin-right:var(--length2);}
+}
+.oi-ec050e select{color:inherit;font:inherit;box-sizing:border-box;}
+.oi-ec050e-input{display:flex;align-items:center;width:100%;}
+

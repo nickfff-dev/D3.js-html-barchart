@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="style.css" type="text/css">
+  
+</head>
+<body>
+ 
+  
+  <form class="oi-ec050e"><label for="oi-ec050e-1">Order</label>
+    <select class="oi-ec050e-input" name="input" id="oi-ec050e-1">
+    <option value="0"> States Alphabetical</option>
+    <option value="1">Num, ascending</option>
+    <option value="2">Num, descending</option>
+    <option value="3">Type</option>
+
+
+  </select></form>
+
+    <div id="chart" class="chart">
+      <div id="legend"></div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+    <script src="index.js"></script>
+    <script>
+    //  read csv to constant
+ 
+    const csv = "states.csv";
+
+    
+    const csvdata = d3.csv(csv).then((data)=>{
+      const chart =  BarChart(data,{
+        x: d=> d.State,
+        y: d=> Number(d.Num),
+        bartype: d=> d.Type,
+        yFormat: "%",
+  yLabel: "↑ Frequency",
+  duration: 750
+      })
+      
+      
+      const update2  = chart.update(d3.sort(data, (a,b)=> b.Num - a.Num))
+      // sort with color 
+      const update3  = chart.update(d3.sort(data, (a,b)=> a.Type - b.Type))
+
+     
+    
+      document.getElementById("chart").appendChild(chart)
+     
+      document.querySelector("select").addEventListener("change", function(e){
+        const value = e.target.value
+        if(value == 0){
+          chart.update(d3.sort(data, (a,b)=> a.State.localeCompare(b.State)))
+        }else if(value == 1){
+          chart.update(d3.sort(data, (a,b)=> a.Num - b.Num))
+        } else if(value == 2){
+          chart.update(d3.sort(data, (a,b)=> b.Num - a.Num))
+        } else if(value == 3){
+          chart.update(d3.sort(data, (d)=> d.Type ))
+        }
+      })
+      
+     
+  
+        
+       
+    
+    })
+
+
+      
+    </script>
+    
+
+</html>
